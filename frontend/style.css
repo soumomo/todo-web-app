@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Work+Sans:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Inter:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Work Sans', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: #181818;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Headings */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+h1::after {
+  content: "works";
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #cccccc;
+  margin-top: 0.3rem;
+}
+
+/* Input */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #fff;
+  outline: none;
+  font-family: 'Inter', 'Work Sans', 'Roboto', sans-serif;
+}
+
+#todo-input::placeholder {
+  color: #777;
+  font-family: 'Playfair Display', 'Inter', 'Work Sans', 'Roboto', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+#todo-input::placeholder {
+  color: #777;
+}
+
+/* Add Button */
+#add-todo-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: #FFD600;
+  color: #222;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  font-size: 1.08rem;
+}
+
+#add-todo-btn:hover {
+  background-color: #FFC400;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+}
+
+/* Todo List */
+#todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Todo Item */
+#todo-list li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  background-color: #222;
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #ddd;
+  font-family: 'Work Sans', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#todo-list li:hover {
+  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.15);
+}
+
+/* Checkbox */
+#todo-list input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888;
+  border-radius: 4px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#todo-list input[type="checkbox"]:checked {
+  background: #e63946;
+  border-color: #e63946;
+}
+
+#todo-list input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Todo Text */
+#todo-list li span {
+  flex: 1 1 auto;
+  margin-left: 8px;
+  font-size: 1.08rem;
+  letter-spacing: 0.2px;
+  color: #fff;
+  transition: color 0.2s;
+  word-break: break-word;
+  white-space: pre-line;
+  min-width: 0;
+  max-width: calc(100% - 48px); /* Prevents overlap with delete button */
+  display: block;
+  overflow-wrap: break-word;
+}
+
+#todo-list li.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Delete Button (Uiverse Style) */
+.deleteButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.deleteButton svg {
+  width: 44%;
+}
+
+.deleteButton:hover {
+  background-color: rgb(237, 56, 56);
+  overflow: visible;
+}
+
+.bin path {
+  transition: all 0.2s;
+}
+
+.deleteButton:hover .bin path {
+  fill: #fff;
+}
+
+.deleteButton:active {
+  transform: scale(0.98);
+}
+
+/* Hide delete text on hover */
+.deleteButton .delete-text {
+  display: none;
+}
+
+/* Tooltip for Delete */
+.tooltip {
+  --tooltip-color: rgb(41, 41, 41);
+  position: absolute;
+  top: -40px;
+  background-color: var(--tooltip-color);
+  color: white;
+  border-radius: 5px;
+  font-family: 'Roboto', 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  padding: 8px 12px;
+  font-weight: 600;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.105);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.tooltip::before {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  content: "";
+  background-color: var(--tooltip-color);
+  bottom: -10%;
+}
+
+.deleteButton:hover .tooltip {
+  opacity: 1;
+}
