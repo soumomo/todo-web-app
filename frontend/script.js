@@ -1,6 +1,6 @@
 // import { isTypedArray } from "util/types";
 
-const API_URL = 'http://localhost:3000/todos';
+const API_URL = 'https://missions-u9g3.onrender.com/todos';
 
 // Fetch existing todos when the page loads
 document.addEventListener('DOMContentLoaded', () => {
